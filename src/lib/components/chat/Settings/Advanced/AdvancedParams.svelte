@@ -149,7 +149,8 @@
 				class="p-1 px-3 text-xs flex rounded transition flex-shrink-0 outline-none"
 				type="button"
 				on:click={() => {
-					params.temperature = (params?.temperature ?? null) === null ? 0.8 : null;
+					//params.temperature = (params?.temperature ?? null) === null ? 0.8 : null;
+					params.temperature = (params?.temperature ?? null) === null ? 0.3 : null;
 				}}
 			>
 				{#if (params?.temperature ?? null) === null}
@@ -609,7 +610,7 @@
 				class="p-1 px-3 text-xs flex rounded transition flex-shrink-0 outline-none"
 				type="button"
 				on:click={() => {
-					params.num_ctx = (params?.num_ctx ?? null) === null ? 2048 : null;
+					params.num_ctx = (params?.num_ctx ?? null) === null ? 8192 : null;
 				}}
 			>
 				{#if (params?.num_ctx ?? null) === null}

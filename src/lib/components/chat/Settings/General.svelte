@@ -169,7 +169,7 @@
 						placeholder="Select a theme"
 						on:change={() => themeChangeHandler(selectedTheme)}
 					>
-						<option value="system">⚙️ {$i18n.t('System')}</option>
+						<option value="system lol">⚙️ {$i18n.t('System')}</option>
 						<option value="dark">🌑 {$i18n.t('Dark')}</option>
 						<option value="oled-dark">🌃 {$i18n.t('OLED Dark')}</option>
 						<option value="light">☀️ {$i18n.t('Light')}</option>
@@ -244,7 +244,7 @@
 
 		<div class="mt-2 space-y-3 pr-1.5">
 			<div class="flex justify-between items-center text-sm">
-				<div class="  font-medium">{$i18n.t('Advanced Parameters')}</div>
+				<div class="  font-medium">{$i18n.t('Advanced Parameters (sorry we disabled the save option model parameters, individual model parameter will cause the model to unload… again, sorry)')}</div>
 				<button
 					class=" text-xs font-medium text-gray-500"
 					type="button"
@@ -325,7 +325,8 @@
 		<button
 			class="px-3.5 py-1.5 text-sm font-medium bg-black hover:bg-gray-900 text-white dark:bg-white dark:text-black dark:hover:bg-gray-100 transition rounded-full"
 			on:click={() => {
-				saveSettings({
+				console.log("sorry we disabled the save option model parameters, individual model parameter will cause the model to unload… again, sorry");
+				/* saveSettings({
 					system: system !== '' ? system : undefined,
 					params: {
 						stream_response: params.stream_response !== null ? params.stream_response : undefined,
@@ -351,11 +352,11 @@
 						num_gpu: params.num_gpu !== null ? params.num_gpu : undefined
 					},
 					keepAlive: keepAlive ? (isNaN(keepAlive) ? keepAlive : parseInt(keepAlive)) : undefined
-				});
+				});*/
 				dispatch('save');
 			}}
 		>
-			{$i18n.t('Save')}
+			{$i18n.t('Save - with out model paramters')}
 		</button>
 	</div>
 </div>
