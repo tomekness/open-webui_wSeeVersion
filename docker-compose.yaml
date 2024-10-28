@@ -7,6 +7,22 @@ services:
     tty: true
     restart: unless-stopped
     image: ollama/ollama:${OLLAMA_DOCKER_TAG-latest}
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: ${OLLAMA_GPU_DRIVER-nvidia}
+              count: ${OLLAMA_GPU_COUNT-1}
+              capabilities:
+                - gpu
+    environment:
+      # keep model alive (don't unload)
+      - OLLAMA_KEEP_ALIVE=true   # Set keep-alive to true
+      # context window for all models // openWebUI overwrites this … to bad …
+      #- MODEL_CONTEXT_LENGTH=8192       # Set the context length for the model (example)      
+      #- MODEL_CONTEXT_LENGTH=16384       # Set the context length for the model (example)      
+      # Debug mode if needed 
+      #- OLLAMA_DEBUG: 1
 
   open-webui:
     build:
@@ -14,7 +30,7 @@ services:
       args:
         OLLAMA_BASE_URL: '/ollama'
       dockerfile: Dockerfile
-    image: ghcr.io/open-webui/open-webui:${WEBUI_DOCKER_TAG-main}
+    #image: ghcr.io/open-webui/open-webui:${WEBUI_DOCKER_TAG-main}
     container_name: open-webui
     volumes:
       - open-webui:/app/backend/data
