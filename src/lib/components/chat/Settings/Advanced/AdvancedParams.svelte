@@ -610,7 +610,9 @@
 				class="p-1 px-3 text-xs flex rounded transition flex-shrink-0 outline-none"
 				type="button"
 				on:click={() => {
+				//	params.num_ctx = (params?.num_ctx ?? null) === null ? 2048 : null;
 					params.num_ctx = (params?.num_ctx ?? null) === null ? 8192 : null;
+				//	params.num_ctx = (params?.num_ctx ?? null) === null ? 4096 : null;
 				}}
 			>
 				{#if (params?.num_ctx ?? null) === null}
